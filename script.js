@@ -5,9 +5,10 @@ let moveHero = 10;
 window.addEventListener("load", () => {
   hero.style.position = "absolute";
   hero.style.left = 100 + "px";
-  hero.style.top = 50 + "%";
+  hero.style.top = 500 + "px";
 });
 
+//------------------ MOVE HERO ------------------//
 window.addEventListener("keydown", function (evt) {
   console.log(evt);
 
@@ -26,3 +27,5 @@ window.addEventListener("keydown", function (evt) {
       break;
   }
 });
+
+//------------------ MOVING ENEMIES ------------------//
