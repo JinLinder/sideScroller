@@ -43,7 +43,7 @@ function moveEnemy () {
       enemy.style.right= count +"px";
       console.log("Inte upp till 350")
     }
-    
+  }  
 };
 moveEnemy();
 
@@ -65,7 +65,6 @@ function newFram () {
      newEnemy.style.top = Math.random()*500 + "px";
    console.log("remove", newEnemy.style.right)
   }
-}
 };
 
 // let counter= 0;
