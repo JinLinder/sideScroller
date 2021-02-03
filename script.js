@@ -4,8 +4,8 @@ let moveHero = 10;
 
 window.addEventListener("load", () => {
   hero.style.position = "absolute";
-  hero.style.left = 100 + "px";
-  hero.style.top = 500 + "px";
+  hero.style.left = 0 + "px";
+  hero.style.top = 0 + "px";
 });
 
 //------------------ MOVE HERO ------------------//
@@ -29,31 +29,69 @@ window.addEventListener("keydown", function (evt) {
 });
 
 //------------------ MOVING ENEMIES ------------------//
+function moveEnemy () {
+  let enemy = document.getElementById("enemy");
+  let count = 0;
+  let enemyInterval = setInterval(fram, 10);
+  function fram () {
+    if (count==950) {
+      clearInterval(enemyInterval);
+      console.log("upp till 350")
+    }
+    else {
+      count ++;
+      enemy.style.right= count +"px";
+      console.log("Inte upp till 350")
+    }
+    
+};
+moveEnemy();
 
-let counter= 0;
-let right = 0
-let enemies = setInterval(function (){
-    counter ++;
-    right += 10;
-    console.log (counter);
-    if (counter==3) {
-      clearInterval(enemies)
-      console.log("Hej", right);
-      counter=0;
-      let newEnemy = document.createElement("div");
-      newEnemy.setAttribute("class", "enemy");
-      wrapper.appendChild(newEnemy);
-      newEnemy.style.position = "absolute";
-      newEnemy.style.right += right + "px";
-      newEnemy.style.top = Math.random()*100 + "vh";
-      console.log("remove", newEnemy.style.right)
-        if(newEnemy.style.left<0+"px") {
-          
-          //newEnemy.remove();
-          
-        }
+let newEnemyInterval = setInterval(newFram, 10);
+function newFram () {
+  newCount=0
+  if (newCount>=10 && newCount <= 20)
+  { console.log(newCount);
+    let right= 0;
+    let newEnemy = document.createElement("div");
+    newEnemy.setAttribute("class", "newEnemy");
+    wrapper.appendChild(newEnemy);
+    newEnemy.style.position = "absolute";
+    newEnemy.style.width= 50+"px";
+    newEnemy.style.height= 50+"px";
+    newEnemy.style.borderRadius = 50 + "%";
+    newEnemy.style.backgroundColor = "red";
+   newEnemy.style.right += right + "px";
+     newEnemy.style.top = Math.random()*500 + "px";
+   console.log("remove", newEnemy.style.right)
   }
-}, 1000);
+}
+};
+
+// let counter= 0;
+// let right = 0
+// let enemies = setInterval(function (){
+//     counter ++;
+//     right += 10;
+//     console.log (counter);
+//     if (counter==3) {
+//       clearInterval(enemies)
+//       console.log("Hej", right);
+//       counter=0;
+//       let newEnemy = document.createElement("div");
+//       newEnemy.setAttribute("class", "enemy");
+//       wrapper.appendChild(newEnemy);
+//       newEnemy.style.position = "absolute";
+//       newEnemy.style.right += right + "px";
+//       newEnemy.style.top = Math.random()*100 + "vh";
+//       console.log("remove", newEnemy.style.right)
+//         if(newEnemy.style.left<0+"px") {
+          
+//           newEnemy.remove();
+          
+//         }
+//   }
+// }, 1000);
 
 
 
