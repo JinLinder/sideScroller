@@ -32,8 +32,8 @@ window.addEventListener("keydown", function (evt) {
 function moveEnemy () {
   let enemy = document.getElementById("enemy");
   let count = 0;
-  let enemyInterval = setInterval(fram, 10);
-  function fram () {
+  let enemyInterval = setInterval(frame, 10);
+  function frame () {
     if (count==950) {
       clearInterval(enemyInterval);
       console.log("upp till 350")
@@ -47,25 +47,36 @@ function moveEnemy () {
 };
 moveEnemy();
 
-let newEnemyInterval = setInterval(newFram, 10);
-function newFram () {
-  newCount=0
-  if (newCount>=10 && newCount <= 20)
-  { console.log(newCount);
-    let right= 0;
-    let newEnemy = document.createElement("div");
-    newEnemy.setAttribute("class", "newEnemy");
-    wrapper.appendChild(newEnemy);
-    newEnemy.style.position = "absolute";
-    newEnemy.style.width= 50+"px";
-    newEnemy.style.height= 50+"px";
-    newEnemy.style.borderRadius = 50 + "%";
-    newEnemy.style.backgroundColor = "red";
-   newEnemy.style.right += right + "px";
-     newEnemy.style.top = Math.random()*500 + "px";
-   console.log("remove", newEnemy.style.right)
-  }
-};
+
+  function moveEnemies (){
+    let newCount=0;
+    let newEnemyInterval = setInterval(newFrame, 500);
+    function newFrame () {
+      if (newCount==950) { 
+        clearInterval(newEnemyInterval);
+        console.log("clear newCount");
+      }
+      else if (newCount<=10) {
+        newCount ++;
+        let newEnemy = document.createElement("div");
+        wrapper.appendChild(newEnemy);
+        console.log("creat new div")
+        newEnemy.style.position = "absolute";
+        newEnemy.style.width= 50+"px";
+        newEnemy.style.height= 50+"px";
+        newEnemy.style.borderRadius = 50 + "%";
+        newEnemy.style.backgroundColor = "red";
+        newEnemy.style.right = newCount + "px";
+        newEnemy.style.top = Math.random()*500 + "px";
+      }
+    }
+  };
+  moveEnemies ();
+
+  
+  
+    
+
 
 // let counter= 0;
 // let right = 0
