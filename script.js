@@ -4,8 +4,8 @@ let moveHero = 10;
 
 window.addEventListener("load", () => {
   hero.style.position = "absolute";
-  hero.style.left = 0 + "px";
-  hero.style.top = 0 + "px";
+  hero.style.left = 100 + "px";
+  hero.style.top = 100 + "px";
 });
 
 //------------------ MOVE HERO ------------------//
@@ -14,38 +14,19 @@ window.addEventListener("keydown", function (evt) {
 
   switch (evt.key) {
     case "ArrowUp":
-      hero.style.top = parseInt(hero.style.top) + moveHero + "px";
-      break;
-    case "ArrowLeft":
-      hero.style.left = parseInt(hero.style.left) + moveHero + "px";
-      break;
-    case "ArrowDown":
       hero.style.top = parseInt(hero.style.top) - moveHero + "px";
       break;
-    case "ArrowRight":
+    case "ArrowLeft":
       hero.style.left = parseInt(hero.style.left) - moveHero + "px";
+      break;
+    case "ArrowDown":
+      hero.style.top = parseInt(hero.style.top) + moveHero + "px";
+      break;
+    case "ArrowRight":
+      hero.style.left = parseInt(hero.style.left) + moveHero + "px";
       break;
   }
 });
-
-//------------------ MOVING ENEMIES ------------------//
-function moveEnemy () {
-  let enemy = document.getElementById("enemy");
-  let count = 0;
-  let enemyInterval = setInterval(frame, 10);
-  function frame () {
-    if (count==950) {
-      clearInterval(enemyInterval);
-      console.log("upp till 350")
-    }
-    else {
-      count ++;
-      enemy.style.right= count +"px";
-      console.log("Inte upp till 350")
-    }
-  }  
-};
-moveEnemy();
 
 //------------------ CREAT NEW ENEMIES AND MOVE THEM ------------------//
 
@@ -58,11 +39,12 @@ function moveEnemies (){
       clearInterval(newEnemyInterval);
       console.log("clear newCount");
     }
-    else if (newCount<12) {
+    else if (newCount<100) {
       let newEnemy = document.createElement("div");
       wrapper.appendChild(newEnemy);
       console.log("creat new div")
       newEnemy.style.position = "absolute";
+      newEnemy.style.position.right = 0+"px";
       newEnemy.style.width= 20+"px";
       newEnemy.style.height= 20+"px";
       newEnemy.style.borderRadius = 50 + "%";
@@ -78,6 +60,15 @@ function moveEnemies (){
         }
         else {
           newEnemy.style.right = right + "px";
+          var heroPosition = hero.getBoundingClientRect();
+          //console.log(heroPosition.top, heroPosition.right, heroPosition.bottom, heroPosition.left);
+          var newEnemyPosition = newEnemy.getBoundingClientRect();
+          //console.log(newEnemyPosition.top, newEnemyPosition.right, newEnemyPosition.bottom, newEnemyPosition.left);
+          if (heroPosition.right==newEnemyPosition.right-20 ) { 
+            console.log (heroPosition.right)
+            console.log (newEnemyPosition.right)
+            alert ("Sorry, you are dead!")
+          }
         } 
       }
     }
