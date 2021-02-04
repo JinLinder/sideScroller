@@ -4,8 +4,8 @@ let moveHero = 10;
 
 window.addEventListener("load", () => {
   hero.style.position = "absolute";
-  hero.style.left = 100 + "px";
-  hero.style.top = 100 + "px";
+  hero.style.left = 0 + "px";
+  hero.style.top = 0 + "px";
 });
 
 //------------------ MOVE HERO ------------------//
@@ -55,18 +55,16 @@ function moveEnemies (){
       let enemyToLeft= setInterval (newNFrame, 10);
       function newNFrame () {
         right ++;
-        if (right==950) {
+        if (right==980) {
           clearInterval(enemyToLeft);
         }
         else {
           newEnemy.style.right = right + "px";
           var heroPosition = hero.getBoundingClientRect();
-          //console.log(heroPosition.top, heroPosition.right, heroPosition.bottom, heroPosition.left);
           var newEnemyPosition = newEnemy.getBoundingClientRect();
-          //console.log(newEnemyPosition.top, newEnemyPosition.right, newEnemyPosition.bottom, newEnemyPosition.left);
-          if (heroPosition.right==newEnemyPosition.right-20 ) { 
-            console.log (heroPosition.right)
-            console.log (newEnemyPosition.right)
+          var yDistans = newEnemyPosition.top-heroPosition.top;
+          var xDistans = newEnemyPosition.right - heroPosition.right
+          if ( yDistans>=-20 && yDistans<=50 && xDistans<=20 && xDistans>=-50) { 
             alert ("Sorry, you are dead!")
           }
         } 
