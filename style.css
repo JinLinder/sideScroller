@@ -1,13 +1,26 @@
+html {
+  margin:0;
+  padding: 0;
+}
+
+body {
+  background-image: url("background1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  max-height: 100vh;
+  background-size: cover;
+} 
 #wrapper {
   width: 1000px;
   height: 500px;
   background-color: aquamarine;
-  margin: auto;
   position: relative;
+  margin: auto;
+  top:100px;
 }
 
 #hero {
   width: 50px;
   height: 50px;
-  background-color: black;
+  /*background-color: black;*/
 }
